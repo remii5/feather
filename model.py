@@ -76,18 +76,18 @@ def decoder(inputs=None, filters=1024, batchNorm=False, dropouts=np.zeros(8)):
         currBlock = concatenate((skipConnections[i], currBlock))
     return currBlock
 
-def unetModel(size=(256, 256, 3), filters = 64, classes = 2, batchNorm = True, dropouts=np.zeros(8)):
+def unetModel(size=(256, 256, 3), filters = 64, classes = 1, batchNorm = True, dropouts=np.zeros(8)):
     inputs = Input(shape=size)
     blocks = encoder(inputs, filters, batchNorm, dropouts)
     output = decoder(blocks, filters*16, batchNorm, dropouts)
 
-    if classes == 2:
+    if classes < 2:
         output = Conv2D(1,1, padding="same" )(output)
         output = Activation('sigmoid')(output)
     else:
         output = Conv2D(classes,1, padding="same" )(output)
         output = Activation('softmax')(output)
     
-    model = tf.keras.Model(inputs = inputs, outputs=output)
+    model = tf.keras.Model(inputs = inputs, outputs=output, name="U-Net")
     return model
 
