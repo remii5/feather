@@ -21,8 +21,9 @@ unet = model.unetModel()
 
 unet.compile(
     loss = BinaryCrossentropy(),
-    optimizers = SGD(learning_rate=1e-4),
+    optimizer = SGD(learning_rate=1e-4),
     metrics=['accuracy']
 )
 
 unet.fit(xTrain, yTrain, epochs, batchSize, validation_data = valDs)
+unet.save('unet.keras')
