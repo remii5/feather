@@ -5,6 +5,6 @@ I am equally as interested in documenting life with a camera as I am interested 
 While I was not willing to sacrifice my love for B&W for the increased time it takes to ensure there are no unwanted objects on the scans, I did wish there was a way to decrease the time it would take to remove them. There are already existing applications that allow you to remove unwanted things from your image via software (e.g. Photoshop, Lightroom), but they still require human interaction. So in an effort to do this process WITHOUT manual intervention feather was born.
 
 
-## Main Inspirations/Citations:
+## Acknowledgements:
 - [U-Net Paper](https://arxiv.org/abs/1505.04597)
 - [Dust/Scratch Removal Paper](https://www.spiedigitallibrary.org/journals/journal-of-electronic-imaging/volume-17/issue-1/013010/Comprehensive-solutions-for-automatic-removal-of-dust-and-scratches-from/10.1117/1.2899845.short)
