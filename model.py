@@ -72,7 +72,7 @@ def decoder(inputs=None, filters=1024, batchNorm=False, dropouts=np.zeros(8)):
 
     for i in range(4):
         currBlock = expansion(blocks[i], filters, batchNorm, dropouts[i + buffer])
-        filters /= 2
+        filters //= 2
         currBlock = concatenate((skipConnections[i], currBlock))
     return currBlock
 

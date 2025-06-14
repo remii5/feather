@@ -61,7 +61,7 @@ def reconstruct(defectMap, imgArr, D = 5, R = 100, threshold=1000):
         
 
 if __name__ == "__main__":
-    imgInputPath = '/input/image'
+    imgInputPath = './input/image'
     model = load_model('unet.keras')
     defectMap, imgNp, img8bit = deconstruct.deconstruct(model, imgInputPath)
     deconstruct.plot(defectMap, imgInputPath)

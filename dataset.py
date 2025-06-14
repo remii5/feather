@@ -2,22 +2,36 @@ import os
 import tensorflow as tf
 from sklearn.model_selection import train_test_split
 
+
 batchSize = 8
 
-imgPath = sorted([os.path.join('data/imgs', fname) for fname in os.listdir('data/imgs')])
-maskPath = sorted([os.path.join('data/masks', fname) for fname in os.listdir('data/masks')])
+img_dir = './data/imgs'
+mask_dir = './data/masks/SegmentationClass'
+
+# Get basenames (without extension) for both
+img_names = {os.path.splitext(f)[0] for f in os.listdir(img_dir) if f.endswith('.png')}
+mask_names = {os.path.splitext(f)[0] for f in os.listdir(mask_dir) if f.endswith('.png')}
+
+# Keep only filenames that exist in both
+valid_names = sorted(img_names & mask_names, key=lambda x: int(x.replace('img', '')))
+
+# Generate full paths
+imgPath = [os.path.join(img_dir, f"{name}.png") for name in valid_names]
+maskPath = [os.path.join(mask_dir, f"{name}.png") for name in valid_names]
+
+print(f"Using {len(imgPath)} matched image/mask pairs.")
 
 xTrain, xTest, yTrain, yTest = train_test_split(imgPath, maskPath, test_size=0.2, random_state=42)
 
 #augmentations
 def transform(img):
-    img = tf.image.random_brightness(img, delta=.2)
+    img = tf.image.random_brightness(img, max_delta=.2)
     img = tf.image.random_contrast(img, 0.2, 0.5)
     return img
 
 #load images
 def load_img(imgPath, maskPath):
-    img = tf.io.read_file(imgPath)      
+    img = tf.io.read_file(imgPath)
     img = tf.image.decode_png(img, channels=1)
     img = tf.image.convert_image_dtype(img, tf.float32)
 
