@@ -8,13 +8,22 @@ def deconstruct(model, imgPath):
     img = tf.image.convert_image_dtype(img, tf.float32)
     imgResize = tf.image.resize(img, (256,256))
     imgInput = tf.expand_dims(imgResize, 0)
+    
+    pred = model.predict(imgInput, verbose=0)[0] 
+    '''
+    #full scale image size
+    pred_big = tf.image.resize(pred, img.shape[:2],method='nearest')  
 
-    pred = model.predict(imgInput, 0)[0]
+    mask = (pred_big[...,0] > 0.5).numpy().astype(np.uint8) 
+
+    imgNp  = np.squeeze(img.numpy())
+    img8bit = (imgNp * 255).astype(np.uint8)
+    '''
     mask = (pred > .5).astype(np.uint8)
     mask = np.squeeze(mask)
 
-    imgNp = np.squeeze(img.numpy())
-    img8bit = (imgNp*255).astype(np.uint8)
+    imgNp = np.squeeze(imgResize.numpy())
+    img8bit = (imgNp * 255).astype(np.uint8)
 
     return mask, imgNp, img8bit
 

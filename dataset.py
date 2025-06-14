@@ -3,7 +3,7 @@ import tensorflow as tf
 from sklearn.model_selection import train_test_split
 
 
-batchSize = 8
+batchSize = 5
 
 img_dir = './data/imgs'
 mask_dir = './data/masks/SegmentationClass'
@@ -19,8 +19,6 @@ valid_names = sorted(img_names & mask_names, key=lambda x: int(x.replace('img', 
 imgPath = [os.path.join(img_dir, f"{name}.png") for name in valid_names]
 maskPath = [os.path.join(mask_dir, f"{name}.png") for name in valid_names]
 
-print(f"Using {len(imgPath)} matched image/mask pairs.")
-
 xTrain, xTest, yTrain, yTest = train_test_split(imgPath, maskPath, test_size=0.2, random_state=42)
 
 #augmentations
@@ -34,12 +32,15 @@ def load_img(imgPath, maskPath):
     img = tf.io.read_file(imgPath)
     img = tf.image.decode_png(img, channels=1)
     img = tf.image.convert_image_dtype(img, tf.float32)
+    img = tf.image.resize(img, (256,256))
+    img = transform(img)
 
     mask = tf.io.read_file(maskPath)
     mask = tf.image.decode_png(mask, channels=1)
     mask = tf.image.convert_image_dtype(mask, tf.float32)
+    mask = tf.image.resize(mask, (256,256))
+    mask = tf.where(mask > 0.1, 1.0, 0.0)
     
-    img = transform(img)
     return img, mask
 
 #create dataset

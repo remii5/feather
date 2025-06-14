@@ -76,7 +76,7 @@ def decoder(inputs=None, filters=1024, batchNorm=False, dropouts=np.zeros(8)):
         currBlock = concatenate((skipConnections[i], currBlock))
     return currBlock
 
-def unetModel(size=(256, 256, 3), filters = 64, classes = 1, batchNorm = True, dropouts=np.zeros(8)):
+def unetModel(size=(256, 256, 1), filters = 64, classes = 1, batchNorm = True, dropouts=np.zeros(8)):
     inputs = Input(shape=size)
     blocks = encoder(inputs, filters, batchNorm, dropouts)
     output = decoder(blocks, filters*16, batchNorm, dropouts)
