@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 
 #non-local context dependent algo
-def reconstruct(defectMap, imgArr, D = 5, R = 100, threshold=50):
+def reconstruct(defectMap, imgArr, D = 5, R = 100, threshold=100):
     if D % 2 == 0:
         raise ValueError("Size must be an odd number.")
     if D > R:
@@ -21,6 +21,7 @@ def reconstruct(defectMap, imgArr, D = 5, R = 100, threshold=50):
     halfD = D//2
     halfR = R//2
 
+    #pad for the edges
     pad_size = R
     imgArrPadded = np.pad(imgArr, pad_size, mode='reflect')
     defectMapPadded = np.pad(defectMap, pad_size, mode='constant')
@@ -82,21 +83,20 @@ if __name__ == "__main__":
     assert defectMap.shape == imgNp.shape, "Mask and image sizes must match!"
     reconstructed = reconstruct(defectMap, imgNp)
     diff = np.abs(reconstructed - imgNp)
+
     plt.imshow(diff, cmap='hot')
     plt.colorbar()
     plt.title("Difference Image")
-    plt.show()
-    plt.imshow(diff[100:150, 100:150], cmap='hot')
-    plt.title("Zoomed Difference (50x50 region)")
-    plt.colorbar()
     plt.show()
 
     changed = np.sum(~np.isclose(reconstructed, imgNp, atol=1e-3))
     plt.imshow(reconstructed, cmap='gray')
     plt.title("Reconstructed Image")
     plt.show()
+
     print("Pixels changed:", changed)
     img = Image.fromarray((reconstructed * 255).astype(np.uint8), mode="L")
+    img.save("./output/reconstructed.png")
     img.show()  
 
 

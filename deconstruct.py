@@ -19,14 +19,15 @@ def deconstruct(model, imgPath):
     imgNp  = np.squeeze(img.numpy())
     img8bit = (imgNp * 255).astype(np.uint8)
     '''
+    #256x256 image
     mask = (pred > .5).astype(np.uint8)
     mask = np.squeeze(mask)
 
     imgNp = np.squeeze(imgResize.numpy())
     img8bit = (imgNp * 255).astype(np.uint8)
-
+    
     return mask, imgNp, img8bit
-
+    
 
 
 def plot(predMask, img):

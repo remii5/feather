@@ -10,7 +10,9 @@ The dataset the model is trained on consists of 50+ images. These images derive 
 
 ## Results
 
-Here is an example result from an input image:
+Here is an example 256x256 result from an input/output image:
+![256x256 input image and detected defects mask](https://private-user-images.githubusercontent.com/90795841/455223905-db1ace41-12ac-43d7-ac48-f2340f148b3f.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDk5NTQwNzIsIm5iZiI6MTc0OTk1Mzc3MiwicGF0aCI6Ii85MDc5NTg0MS80NTUyMjM5MDUtZGIxYWNlNDEtMTJhYy00M2Q3LWFjNDgtZjIzNDBmMTQ4YjNmLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA2MTUlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNjE1VDAyMTYxMlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTA4MTI5YmE3NjA0MzdjY2QxMmM4ZWU5MGIxYjNlYWQ0ZjE1OTBhM2RhMTZkMDBmMjRjYzM1MmMyYjFmM2I5MDgmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.6zns17tYdvVtk_Bs5BXsiag-G4rfGbiEUnxwFL5tUfU)
+![256x256 reconstructed image](https://private-user-images.githubusercontent.com/90795841/455223906-7bce6488-e891-40a0-aff9-79d481913a06.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDk5NTQwNzIsIm5iZiI6MTc0OTk1Mzc3MiwicGF0aCI6Ii85MDc5NTg0MS80NTUyMjM5MDYtN2JjZTY0ODgtZTg5MS00MGEwLWFmZjktNzlkNDgxOTEzYTA2LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA2MTUlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNjE1VDAyMTYxMlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTA3ZmM3ZjlhOWI4NTJiYWE1MjZhOGY0MDFkMzg5MmE0Mjc4ZDk1M2Q2ODE1ZTE5ODZiM2E3MDk5YWY0N2NkNGEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.DRyOcS8rEbgBkzTOOS_Q36lnKE9JWilAj8F-5_TxE1U)
 
 ## Main Struggles & Takeaways
 
@@ -18,7 +20,7 @@ The world of Machine Learning and Digital Image Processing is massive, and is fl
 
 In regards to my programming, lots of time was spent debugging my reconstruction algorithm. I did not realize for a long time that it was only reconstructing a portion of my input image because of the size I had my algorithm analyse for defects.
 
-I look forward to returning to this project or a similar project in the future. Finding ways to possibly optimize something like this would be interesting. This particular project would definetly see success with a larger dataset and optimizations in processing large image file sizes.
+I look forward to returning to this project or a similar project in the future. Finding ways to possibly optimize something like this would be interesting. This particular project would definetly see success with a larger dataset and optimizations in processing larger image file sizes.
 
 ## Requirements
 
