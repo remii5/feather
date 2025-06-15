@@ -20,7 +20,7 @@ The world of Machine Learning and Digital Image Processing is massive, and is fl
 
 In regards to my programming, lots of time was spent debugging my reconstruction algorithm. I did not realize for a long time that it was only reconstructing a portion of my input image because of the size I had my algorithm analyse for defects.
 
-I look forward to returning to this project or a similar project in the future. Finding ways to possibly optimize something like this would be interesting. This particular project would definetly see success with a larger dataset and optimizations in processing larger image file sizes.
+I look forward to returning to this project or a similar project in the future. Finding ways to possibly optimize something like this would be interesting. This particular project would definitely see success with a larger dataset and optimizations in processing larger image file sizes.
 
 ## Requirements
 
